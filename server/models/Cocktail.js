@@ -1,45 +1,34 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
-const thoughtSchema = new Schema({
-  thoughtText: {
-    type: String,
-    required: 'You need to leave a thought!',
-    minlength: 1,
-    maxlength: 280,
-    trim: true,
-  },
-  thoughtAuthor: {
+const cocktailSchema = new Schema({
+  name: {
     type: String,
     required: true,
-    trim: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
+  instructions: {
+    type: String,
+    required: true,
   },
-  comments: [
+  image: {
+    type: String,
+    required: true,
+  },
+  isAlchoholic: {
+    type: Boolean,
+    required: true,
+  },
+  ingredients: [
     {
-      commentText: {
+      ingredient: {
         type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
       },
-      commentAuthor: {
+      measure: {
         type: String,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
-      },
-    },
+      }
+    }
   ],
 });
 
-const Thought = model('Thought', thoughtSchema);
+const Cocktail = model('Cocktail', cocktailSchema);
 
-module.exports = Thought;
+module.exports = Cocktail;
