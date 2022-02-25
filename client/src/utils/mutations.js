@@ -24,41 +24,43 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!, $thoughtAuthor: String!) {
-    addThought(thoughtText: $thoughtText, thoughtAuthor: $thoughtAuthor) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
+export const ADD_COCKTAIL = gql`
+  mutation addCocktail($name: String!, $instructions: String!, $image: String!, $isAlchoholic: Boolean!, $ingredients: [Ingredient]!) {
+    addCocktail(name: $name, instructions: $instructions, image: $image, isAlchoholic: $isAlchoholic, ingredients: $ingredients) {
+      cocktail {
         _id
-        commentText
+        name
+        instructions
+        image
+        isAlchoholic
+        ingredients {
+          ingredient
+          measure
+        }
       }
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment(
-    $thoughtId: ID!
-    $commentText: String!
-    $commentAuthor: String!
-  ) {
-    addComment(
-      thoughtId: $thoughtId
-      commentText: $commentText
-      commentAuthor: $commentAuthor
-    ) {
+export const SAVE_COCKTAIL = gql`
+  mutation saveCocktail($userId: ID!, $cocktailId: ID!) {
+    saveCocktail(userId: $userId, cocktailId: $cocktailId) {
+      user {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
+      username
+      email
+      cocktails {
         _id
-        commentText
-        createdAt
+        name
+        instructions
+        image
+        isAlchoholic
+        ingredients {
+          ingredient
+          measure
+        }
       }
+    }
     }
   }
 `;
