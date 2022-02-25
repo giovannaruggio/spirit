@@ -21,6 +21,13 @@ const resolvers = {
     addCocktail: async (parent, {name, instructions,image, isAlcoholic, ingredients}) => {
       
     },
+    addIngredient: async (parent, { cocktailId, ingredient, measure } ) => {
+      const cocktail = await Cocktail.findOneAndUpdate(
+        { _id: cocktailId },
+        { $addToSet: { ingredients: { ingredient, measure } } },
+        { $new: true}
+      )
+    },
     removeCocktail: async (parent, args, context) => {
       
       throw new AuthenticationError("You need to be logged in!");
