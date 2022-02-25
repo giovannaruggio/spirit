@@ -37,9 +37,10 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addCocktail(name: String!, instructions: String!, image: String!, isAlchoholic: Boolean!, ingredients: [Ingredient]!): Cocktail
+    addCocktail(name: String!, instructions: String!, image: String!, isAlchoholic: Boolean!): Cocktail
+    addIngredient(cocktailId: ID!, ingredient: String!, measure: String!): Cocktail
     saveCocktail(userId: ID!, cocktailId: ID!): User
-    deleteCocktail(userId: ID!, cocktailId: ID!): User
+    removeCocktail(userId: ID!, cocktailId: ID!): User
   }
 `;
 

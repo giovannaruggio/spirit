@@ -42,46 +42,58 @@ export const ADD_COCKTAIL = gql`
   }
 `;
 
+export const ADD_INGREDIENT = gql`
+  mutation addIngredient($cocktailId: ID!, $ingredient: String!, $measure: String!) {
+    addIngredient(cocktailId: $cocktailId, ingredient: $ingredient, measure: $measure) {
+      _id
+      name
+      instructions
+      image
+      isAlchoholic
+      ingredients {
+        ingredient
+        measure
+      }
+    }
+  }
+`;
+
 export const SAVE_COCKTAIL = gql`
   mutation saveCocktail($userId: ID!, $cocktailId: ID!) {
     saveCocktail(userId: $userId, cocktailId: $cocktailId) {
-      user {
+      _id
+      username
+      email
+      cocktails {
         _id
-        username
-        email
-        cocktails {
-          _id
-          name
-          instructions
-          image
-          isAlchoholic
-          ingredients {
-            ingredient
-            measure
-          }
+        name
+        instructions
+        image
+        isAlchoholic
+        ingredients {
+          ingredient
+          measure
         }
       }
     }
   }
 `;
 
-export const DELETE_COCKTAIL = gql`
-  mutation deleteCocktail($userId: ID!, $cocktailId: ID!) {
-    deleteCocktail(userId: $userId, cocktailId: $cocktailId) {
-      user {
+export const REMOVE_COCKTAIL = gql`
+  mutation removeCocktail($userId: ID!, $cocktailId: ID!) {
+    removeCocktail(userId: $userId, cocktailId: $cocktailId) {
+      _id
+      username
+      email
+      cocktails {
         _id
-        username
-        email
-        cocktails {
-          _id
-          name
-          instructions
-          image
-          isAlchoholic
-          ingredients {
-            ingredient
-            measure
-          }
+        name
+        instructions
+        image
+        isAlchoholic
+        ingredients {
+          ingredient
+          measure
         }
       }
     }
