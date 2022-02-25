@@ -46,21 +46,44 @@ export const SAVE_COCKTAIL = gql`
   mutation saveCocktail($userId: ID!, $cocktailId: ID!) {
     saveCocktail(userId: $userId, cocktailId: $cocktailId) {
       user {
-      _id
-      username
-      email
-      cocktails {
         _id
-        name
-        instructions
-        image
-        isAlchoholic
-        ingredients {
-          ingredient
-          measure
+        username
+        email
+        cocktails {
+          _id
+          name
+          instructions
+          image
+          isAlchoholic
+          ingredients {
+            ingredient
+            measure
+          }
         }
       }
     }
+  }
+`;
+
+export const DELETE_COCKTAIL = gql`
+  mutation deleteCocktail($userId: ID!, $cocktailId: ID!) {
+    deleteCocktail(userId: $userId, cocktailId: $cocktailId) {
+      user {
+        _id
+        username
+        email
+        cocktails {
+          _id
+          name
+          instructions
+          image
+          isAlchoholic
+          ingredients {
+            ingredient
+            measure
+          }
+        }
+      }
     }
   }
 `;

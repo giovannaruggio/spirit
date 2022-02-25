@@ -39,6 +39,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addCocktail(name: String!, instructions: String!, image: String!, isAlchoholic: Boolean!, ingredients: [Ingredient]!): Cocktail
     saveCocktail(userId: ID!, cocktailId: ID!): User
+    deleteCocktail(userId: ID!, cocktailId: ID!): User
   }
 `;
 
