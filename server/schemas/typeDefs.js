@@ -32,7 +32,6 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    cocktails(username: String): [Cocktail]
   }
 
   type Mutation {
@@ -40,6 +39,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addCocktail(name: String!, instructions: String!, image: String!, isAlchoholic: Boolean!, ingredients: [Ingredient]!): Cocktail
     saveCocktail(cocktailId: ID!): User
+    removeCocktail(cocktailId: ID!): User
   }
 `;
 
