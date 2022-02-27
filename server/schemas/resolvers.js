@@ -33,15 +33,15 @@ const resolvers = {
     removeCocktail: async (parent, { userId, cocktailId }, context) => {
       const user = await User.findOneAndUpdate(
         { _id: userId },
-        { $pull: { cocktails: { _id: cocktailId } } },
+        { $pull: { cocktails: cocktailId } },
         { $new: true }
       );
       return user;
     },
-    saveCocktail: async (parent, { userId, cocktailToSave }, context) => {
+    saveCocktail: async (parent, { userId, cocktailId }, context) => {
       const user = await User.findOneAndUpdate(
         { _id: userId },
-        { $addToSet: { cocktails: cocktailToSave } },
+        { $addToSet: { cocktails: { _id: cocktailId } } },
         { $new: true }
       );
       return user;
