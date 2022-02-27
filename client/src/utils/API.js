@@ -7,3 +7,8 @@ export const getCocktailsNameSearch = (query) => {
 export const getRandomCocktail = () => {
     return fetch('www.thecocktaildb.com/api/json/v1/1/random.php');
 }
+
+// API call to get cocktails by ingredient (search this one if the name search returns no results)
+export const getCocktailsIngredientSearch = (query) => {
+    return fetch(`www.thecocktaildb.com/api/json/v1/1/search.php?i=${query}`)
+}
