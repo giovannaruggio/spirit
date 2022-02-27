@@ -18,7 +18,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addCocktail: async (parent, {name, instructions,image, isAlcoholic }) => {
+    addCocktail: async (parent, { name, instructions, image, isAlcoholic }) => {
       const cocktail = await Cocktail.create({ name, instructions, image, isAlcoholic });
       return cocktail;
     },

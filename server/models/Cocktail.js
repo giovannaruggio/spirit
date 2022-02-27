@@ -13,7 +13,7 @@ const cocktailSchema = new Schema({
     type: String,
     required: true,
   },
-  isAlchoholic: {
+  isAlcoholic: {
     type: Boolean,
     required: true,
   },
