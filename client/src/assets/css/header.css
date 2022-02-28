@@ -1,0 +1,12 @@
+* {
+    font-family: 'Norican', cursive;
+}
+
+.imgcontainer {
+    height: 100px;
+    width: 100px;
+}
+
+img {
+    padding: 30px;
+}

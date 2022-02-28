@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/spiritDB',
+  process.env.MONGODB_URI || 'mongodb://127.0.0.1/spiritDB',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
