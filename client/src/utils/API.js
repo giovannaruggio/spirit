@@ -1,14 +1,20 @@
 // API call to get cocktails by search term (searching by name)
-export const getCocktailsNameSearch = (query) => {
-    return fetch(`www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
+export const getCocktailsNameSearch = async (query) => {
+    const returnData = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
+    const parsedData = await returnData.json();
+    return parsedData;
 }
 
 // API call to get one random cocktail for home/search page
-export const getRandomCocktail = () => {
-    return fetch('www.thecocktaildb.com/api/json/v1/1/random.php');
+export const getRandomCocktail = async () => {
+    const returnData = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+    const parsedData = await returnData.json();
+    return parsedData;
 }
 
 // API call to get cocktails by ingredient (search this one if the name search returns no results)
-export const getCocktailsIngredientSearch = (query) => {
-    return fetch(`www.thecocktaildb.com/api/json/v1/1/search.php?i=${query}`)
+export const getCocktailsIngredientSearch = async (query) => {
+    const returnData = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${query}`);
+    const parsedData = await returnData.json();
+    return parsedData;
 }
