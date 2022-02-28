@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USERS = gql`
-  query users() {
+  query users {
     users {
       _id
       username
@@ -11,7 +11,7 @@ export const QUERY_USERS = gql`
         name
         instructions
         image
-        isAlchoholic
+        isAlcoholic
         ingredients {
           ingredient
           measure
@@ -32,7 +32,7 @@ export const QUERY_USER = gql`
         name
         instructions
         image
-        isAlchoholic
+        isAlcoholic
         ingredients {
           ingredient
           measure
