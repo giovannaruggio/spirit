@@ -20,7 +20,8 @@ const Home = () => {
 
   const testCocktailDB = async (query) => {
     const first = await getRandomCocktail();
-    setRandomCocktail(first);
+    const second = first.drinks[0];
+    setRandomCocktail(second);
     console.log(randomCocktail);
 
   }
@@ -30,7 +31,7 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-center">
-
+        <p>Random Drink:  {randomCocktail.strDrink}</p>
       </div>
     </main>
   );
