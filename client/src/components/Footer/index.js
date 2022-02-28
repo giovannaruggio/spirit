@@ -15,18 +15,9 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
-        <h4>
-          Made with{' '}
-          <span
-            className="emoji"
-            role="img"
-            aria-label="heart"
-            aria-hidden="false"
-          >
-            ❤️
-          </span>{' '}
-          by the Tech Thoughts team.
-        </h4>
+        <h6>
+          Created by: Michael Hranek, John Roberts, and Giovanna Ruggio
+        </h6>
       </div>
     </footer>
   );
