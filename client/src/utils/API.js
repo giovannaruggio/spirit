@@ -12,3 +12,4 @@ export const getRandomCocktail = () => {
 export const getCocktailsIngredientSearch = (query) => {
     return fetch(`www.thecocktaildb.com/api/json/v1/1/search.php?i=${query}`)
 }
+
