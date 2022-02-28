@@ -18,23 +18,33 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addCocktail: async (parent, {name, instructions,image, isAlcoholic, ingredients}) => {
-      
+    addCocktail: async (parent, { name, instructions, image, isAlcoholic }) => {
+      const cocktail = await Cocktail.create({ name, instructions, image, isAlcoholic });
+      return cocktail;
     },
     addIngredient: async (parent, { cocktailId, ingredient, measure } ) => {
       const cocktail = await Cocktail.findOneAndUpdate(
         { _id: cocktailId },
         { $addToSet: { ingredients: { ingredient, measure } } },
         { $new: true}
-      )
+      );
+      return cocktail;
     },
-    removeCocktail: async (parent, args, context) => {
-      
-      throw new AuthenticationError("You need to be logged in!");
+    removeCocktail: async (parent, { userId, cocktailId }, context) => {
+      const user = await User.findOneAndUpdate(
+        { _id: userId },
+        { $pull: { cocktails: cocktailId } },
+        { $new: true }
+      );
+      return user;
     },
-    saveCocktail: async (parent, { cocktailToSave }, context) => {
-      
-      throw new AuthenticationError("You need to be logged in!");
+    saveCocktail: async (parent, { userId, cocktailId }, context) => {
+      const user = await User.findOneAndUpdate(
+        { _id: userId },
+        { $addToSet: { cocktails: { _id: cocktailId } } },
+        { $new: true }
+      );
+      return user;
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
