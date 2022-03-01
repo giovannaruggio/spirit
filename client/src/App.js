@@ -65,10 +65,10 @@ function App() {
         <Router>
           <div className="flex-column justify-flex-start min-100-vh">
             <Header />
-            <Collage />
             <div className="container">
               <Route exact path="/">
                 <Home />
+                <Collage />
               </Route>
               <Route exact path="/login">
                 <Login />
