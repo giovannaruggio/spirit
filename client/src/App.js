@@ -14,6 +14,9 @@ import Signup from "./pages/Signup";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Collage from "./components/collage";
+import SearchCocktail from './pages/searchCocktails';
+import SavedCocktails from './pages/saveCocktails';
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -51,8 +54,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-            <style type="text/css">
-    {`
+      <style type="text/css">
+        {`
     body {
       background-color: #F2E966;
       font-family: 'Gothic A1', sans-serif;
@@ -73,8 +76,12 @@ function App() {
               <Route exact path="/signup">
                 <Signup />
               </Route>
-              {/* <Route exact path="/">
-            </Route> */}
+              <Route exact path="/search">
+                <SearchCocktail />
+              </Route>
+              <Route exact path="/users/:userId">
+                <SavedCocktails />
+              </Route>
             </div>
             <Footer />
           </div>
