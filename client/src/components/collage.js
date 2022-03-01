@@ -28,7 +28,7 @@ const itemData = [
     title: "Slice",
   },
   {
-    img: "https://drive.google.com/uc?export=view&id=1Gpg8fxp5OcbeQHlIlNlefCvNFitcZbS6",
+    img: "https://drive.google.com/uc?export=view&id=1wRz5lc0vcic_BR927nGzPZwIoLKDktoD",
     title: "Star",
   },
   {
@@ -56,7 +56,7 @@ const itemData = [
     title: "Blueberry",
   },
   {
-    img: "https://drive.google.com/uc?export=view&id=1Gpg8fxp5OcbeQHlIlNlefCvNFitcZbS6",
+    img: "https://drive.google.com/uc?export=view&id=1wRz5lc0vcic_BR927nGzPZwIoLKDktoD",
     title: "Star",
   },
   {
