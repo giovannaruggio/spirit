@@ -19,9 +19,7 @@ const resolvers = {
       return { token, user };
     },
     addCocktail: async (parent, { name, instructions, image, isAlcoholic, ingredients }) => {
-      console.log(name, instructions, image, isAlcoholic, ingredients);
       const cocktail = await Cocktail.create({ name, instructions, image, isAlcoholic, ingredients });
-      console.log({cocktail});
       return cocktail;
     },
     removeCocktail: async (parent, { userId, cocktailId }, context) => {
@@ -37,7 +35,7 @@ const resolvers = {
         { _id: userId },
         { $addToSet: { cocktails: { _id: cocktailId } } },
         { $new: true }
-      );
+      ).populate('cocktails');
       return user;
     },
     login: async (parent, { email, password }) => {

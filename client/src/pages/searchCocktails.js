@@ -3,7 +3,8 @@ import { useMutation } from '@apollo/client';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { getCocktailsNameSearch } from '../utils/API';
-import { ADD_COCKTAIL } from '../utils/mutations';
+import { ADD_COCKTAIL, SAVE_COCKTAIL } from '../utils/mutations';
+import auth from '../utils/auth';
 
 export default function SearchCocktail() {
 
@@ -11,6 +12,7 @@ export default function SearchCocktail() {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const [addCocktail] = useMutation(ADD_COCKTAIL);
+  const [saveCocktail] = useMutation(SAVE_COCKTAIL);
 
   const handleInputChange = (e) => {
     const { value } = e.target;
@@ -57,10 +59,10 @@ export default function SearchCocktail() {
     const drinkIndex = event.target.dataset.drink;
     const drink = itemData[drinkIndex];
     // Save drink to the database
-    let newCocktail = await addCocktail({ variables: { name: drink.name, instructions: drink.instructions, image: drink.img, isAlcoholic: drink.isAlcoholic, ingredients: drink.ingredients } });
-    console.log(newCocktail);
+    const newCocktail = await addCocktail({ variables: { name: drink.name, instructions: drink.instructions, image: drink.img, isAlcoholic: drink.isAlcoholic, ingredients: drink.ingredients } });
     // Save that drink to the user's list of cocktails
-    
+    const user = await auth.getProfile();
+    const newSaveCocktail = await saveCocktail({ variables: { userId: user.data._id, cocktailId: newCocktail.data.addCocktail._id } });
   }
 
   return (

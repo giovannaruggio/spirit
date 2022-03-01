@@ -15,7 +15,7 @@ const typeDefs = gql`
     instructions: String
     image: String
     isAlcoholic: Boolean
-    ingredients: [Ingredient]!
+    ingredients: [Ingredient]
   }
 
   type Ingredient {
