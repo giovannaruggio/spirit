@@ -56,8 +56,8 @@ const itemData = [
     title: "Blueberry",
   },
   {
-    img: "https://drive.google.com/uc?export=view&id=1wRz5lc0vcic_BR927nGzPZwIoLKDktoD",
-    title: "Star",
+    img: "https://drive.google.com/uc?export=view&id=1HbhK7un949JLQahjlt4GQ7JwyxVzbsTZ",
+    title: "Star star",
   },
   {
     img: "https://drive.google.com/uc?export=view&id=1iS2nm-2U_69HUPlE9pn2gDj3E27vDCgK",
