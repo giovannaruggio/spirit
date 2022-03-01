@@ -13,8 +13,10 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Collage from "./components/collage";
 import SearchCocktail from './pages/searchCocktails';
 import SavedCocktails from './pages/saveCocktails';
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -63,6 +65,7 @@ function App() {
         <Router>
           <div className="flex-column justify-flex-start min-100-vh">
             <Header />
+            <Collage />
             <div className="container">
               <Route exact path="/">
                 <Home />

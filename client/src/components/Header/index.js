@@ -4,6 +4,7 @@ import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
 
 import SignUpForm from "../../pages/Signup";
 import LoginForm from "../../pages/Login";
+import Logo from "../../assets/SpiritLogo.png";
 
 import Auth from "../../utils/auth";
 
@@ -16,7 +17,16 @@ const Header = () => {
       <Navbar bg="light" variant="light" expand="lg">
         <Container fluid>
           <Navbar.Brand as={Link} to="/">
-            Spirit
+          <style type="text/css">
+    {`
+    #brand {
+      height: 100px;
+      width:100%;
+      margin: 0;
+    }
+    `}
+      </style>
+          <img id="brand" src={Logo} alt="" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar">
