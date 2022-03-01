@@ -52,7 +52,9 @@ export default function SearchCocktail() {
   }
 
   const saveToDB = async (event) => {
-    const drink = event.target;
+    const drinkIndex = event.target.dataset.drink;
+    const drink = itemData[drinkIndex];
+    console.log(drink);
   }
 
   return (
