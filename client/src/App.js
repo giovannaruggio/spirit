@@ -13,6 +13,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SearchCocktail from './pages/searchCocktails';
+import SavedCocktails from './pages/saveCocktails';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -54,8 +56,12 @@ function App() {
             <Route exact path="/signup">
               <Signup />
             </Route>
-            {/* <Route exact path="/">
-            </Route> */}
+            <Route exact path="/search">
+              <SearchCocktail />
+            </Route>
+            <Route exact path="/users/:userId">
+              <SavedCocktails />
+            </Route>
           </div>
           <Footer />
         </div>
