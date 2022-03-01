@@ -10,7 +10,7 @@ export default function SearchCocktail() {
   const [itemData, setItemData] = React.useState([]);
   const [searchTerm, setSearchTerm] = React.useState('');
 
-  const [addCocktail, { cocktailError }] = useMutation(ADD_COCKTAIL);
+  const [addCocktail] = useMutation(ADD_COCKTAIL);
 
   const handleInputChange = (e) => {
     const { value } = e.target;
@@ -60,7 +60,7 @@ export default function SearchCocktail() {
     let newCocktail = await addCocktail({ variables: { name: drink.name, instructions: drink.instructions, image: drink.img, isAlcoholic: drink.isAlcoholic, ingredients: drink.ingredients } });
     console.log(newCocktail);
     // Save that drink to the user's list of cocktails
-
+    
   }
 
   return (
