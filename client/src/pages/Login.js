@@ -17,6 +17,18 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import CardMedia from '@mui/material/CardMedia';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#212121",
+    },
+  },
+  typography: {
+    fontFamily: 'Gothic A1',
+  },
+});
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -54,7 +66,7 @@ const Login = (props) => {
   };
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -72,7 +84,7 @@ const Login = (props) => {
           alt="Logo"
         />
           <Typography component="h1" variant="h5">
-            Sign in
+            Log in
           </Typography>
           <Box component="form" onSubmit={handleFormSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -112,21 +124,11 @@ const Login = (props) => {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
             </Grid>
           </Box>
         </Box>
       </Container>
-    </div>
+    </ThemeProvider>
   );
 };
 
