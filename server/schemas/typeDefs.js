@@ -15,7 +15,7 @@ const typeDefs = gql`
     instructions: String
     image: String
     isAlcoholic: Boolean
-    ingredients: [Ingredient]!
+    ingredients: [Ingredient]
   }
 
   type Ingredient {
@@ -37,6 +37,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
+    me: User
   }
 
   type Mutation {

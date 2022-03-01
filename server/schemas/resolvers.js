@@ -10,6 +10,12 @@ const resolvers = {
     user: async (parent, { username }) => {
       return await User.findOne({ username }).populate('cocktails');
     },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('cocktails');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -19,9 +25,7 @@ const resolvers = {
       return { token, user };
     },
     addCocktail: async (parent, { name, instructions, image, isAlcoholic, ingredients }) => {
-      console.log(name, instructions, image, isAlcoholic, ingredients);
       const cocktail = await Cocktail.create({ name, instructions, image, isAlcoholic, ingredients });
-      console.log({cocktail});
       return cocktail;
     },
     removeCocktail: async (parent, { userId, cocktailId }, context) => {
@@ -37,7 +41,7 @@ const resolvers = {
         { _id: userId },
         { $addToSet: { cocktails: { _id: cocktailId } } },
         { $new: true }
-      );
+      ).populate('cocktails');
       return user;
     },
     login: async (parent, { email, password }) => {

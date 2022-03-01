@@ -79,7 +79,7 @@ function App() {
               <Route exact path="/search">
                 <SearchCocktail />
               </Route>
-              <Route exact path="/users/:userId">
+              <Route exact path="/saved">
                 <SavedCocktails />
               </Route>
             </div>

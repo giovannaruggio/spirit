@@ -42,3 +42,21 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_ME = gql`
+  {me {
+    _id
+    username
+    email
+    cocktails {
+      _id
+      name
+      instructions
+      image
+      isAlcoholic
+      ingredients {
+        ingredient
+        measure
+      }
+    }
+  }}
+`;
