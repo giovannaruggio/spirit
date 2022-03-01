@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import SingleCocktail from '../components/SingleCocktail';
 import { QUERY_USERS } from '../utils/queries';
-import { getCocktailsNameSearch, getCocktailsIngredientSearch, getRandomCocktail } from '../utils/API';
+import { getRandomCocktail } from '../utils/API';
 
 const Home = () => {
   const { loading, data, error } = useQuery(QUERY_USERS);
@@ -23,10 +23,7 @@ const Home = () => {
     const first = await getRandomCocktail();
     const second = first.drinks[0];
     setRandomCocktail(second);
-
   }
-
- 
 
   return (
     <main>
