@@ -98,6 +98,7 @@ export default function SearchCocktail() {
     }
     .center {
       text-align: center;
+      max-width: 100%;
     }
     `}
       </style>
