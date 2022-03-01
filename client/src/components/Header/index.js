@@ -106,17 +106,20 @@ export default Header;
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
+            <h1 className="m-0">Spirit</h1>
           </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
+          <p className="m-0">Create your own drink collection</p>
         </div>
         <div>
           {Auth.loggedIn() ? (
             <>
-              <span>Hey there, {Auth.getProfile().data.username}!</span>
+              <span>Logged in as {Auth.getProfile().data.username}</span>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
               </button>
+              <Link className="btn btn-lg btn-info m-2" to="/search">
+                Search
+              </Link>
             </>
           ) : (
             <>
@@ -128,6 +131,7 @@ export default Header;
               </Link>
             </>
           )}
+          
         </div>
       </div>
     </header> */
