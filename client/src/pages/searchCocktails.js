@@ -67,12 +67,12 @@ export default function SearchCocktail() {
 
   return (
     <>
-      <form>
+      <div>
         <input value={searchTerm} name="searchTerm" onChange={handleInputChange} type="text"></input>
         <button type="button" onClick={searchCocktailDB}>
           Search for a cocktail
         </button>
-      </form>
+      </div>
       <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
         {itemData.map((item, index) => (
           <div key={item.img}>
