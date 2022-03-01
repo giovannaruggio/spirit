@@ -18,16 +18,10 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addCocktail: async (parent, { name, instructions, image, isAlcoholic }) => {
-      const cocktail = await Cocktail.create({ name, instructions, image, isAlcoholic });
-      return cocktail;
-    },
-    addIngredient: async (parent, { cocktailId, ingredient, measure } ) => {
-      const cocktail = await Cocktail.findOneAndUpdate(
-        { _id: cocktailId },
-        { $addToSet: { ingredients: { ingredient, measure } } },
-        { $new: true}
-      );
+    addCocktail: async (parent, { name, instructions, image, isAlcoholic, ingredients }) => {
+      console.log(name, instructions, image, isAlcoholic, ingredients);
+      const cocktail = await Cocktail.create({ name, instructions, image, isAlcoholic, ingredients });
+      console.log({cocktail});
       return cocktail;
     },
     removeCocktail: async (parent, { userId, cocktailId }, context) => {
