@@ -3,21 +3,19 @@ import { useMutation } from '@apollo/client';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { getCocktailsNameSearch } from '../utils/API';
-import { ADD_COCKTAIL, ADD_INGREDIENT } from '../utils/mutations';
+import { ADD_COCKTAIL } from '../utils/mutations';
 
 export default function SearchCocktail() {
 
   const [itemData, setItemData] = React.useState([]);
   const [searchTerm, setSearchTerm] = React.useState('');
 
-  const [addCocktail] = useMutation(ADD_COCKTAIL);
-  const [addIngredient] = useMutation(ADD_INGREDIENT);
+  const [addCocktail, { cocktailError }] = useMutation(ADD_COCKTAIL);
 
   const handleInputChange = (e) => {
     const { value } = e.target;
     return setSearchTerm(value);
   }
-
 
   const searchCocktailDB = async (event) => {
     event.preventDefault();
@@ -59,14 +57,10 @@ export default function SearchCocktail() {
     const drinkIndex = event.target.dataset.drink;
     const drink = itemData[drinkIndex];
     // Save drink to the database
-    let newCocktail = await addCocktail({ variables: { name: drink.name, instructions: drink.instructions, image: drink.img, isAlcoholic: drink.isAlcoholic } });
+    let newCocktail = await addCocktail({ variables: { name: drink.name, instructions: drink.instructions, image: drink.img, isAlcoholic: drink.isAlcoholic, ingredients: drink.ingredients } });
     console.log(newCocktail);
-    // using the created Cocktail's _id, loop through the ingredients array and add ingredients/measures to the database
-    // const returnData = await drink.ingredients.map(item => {
-    //   newCocktail = addIngredient({ variables: { cocktailId: newCocktail._id, ingredient: item.ingredient, measure: item.measure } });
-    //   return newCocktail;
-    // })
-    // console.log(returnData);
+    // Save that drink to the user's list of cocktails
+
   }
 
   return (

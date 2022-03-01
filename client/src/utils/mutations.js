@@ -25,26 +25,15 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_COCKTAIL = gql`
-  mutation addCocktail($name: String!, $instructions: String!, $image: String!, $isAlcoholic: Boolean!) {
-    addCocktail(name: $name, instructions: $instructions, image: $image, isAlcoholic: $isAlcoholic) {
-      _id
-      name
-      instructions
-      image
-      isAlcoholic
-    }
-  }
-`;
-
-export const ADD_INGREDIENT = gql`
-  mutation addIngredient($cocktailId: ID!, $ingredient: String!, $measure: String!) {
-    addIngredient(cocktailId: $cocktailId, ingredient: $ingredient, measure: $measure) {
+  mutation addCocktail($name: String!, $instructions: String!, $image: String!, $isAlcoholic: Boolean!, $ingredients: [IngredientInput]) {
+    addCocktail(name: $name, instructions: $instructions, image: $image, isAlcoholic: $isAlcoholic, ingredients: $ingredients) {
       _id
       name
       instructions
       image
       isAlcoholic
       ingredients {
+        _id
         ingredient
         measure
       }
