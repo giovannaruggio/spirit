@@ -14,18 +14,19 @@ const Header = () => {
 
   return (
     <>
-      <Navbar bg="light" variant="light" expand="lg">
-        <Container fluid>
-          <Navbar.Brand as={Link} to="/">
-          <style type="text/css">
+    <style type="text/css">
     {`
     #brand {
       height: 100px;
       width:100%;
       margin: 0;
     }
+
     `}
       </style>
+      <Navbar fixed="top" bg="white" variant="light" expand="lg">
+        <Container fluid>
+          <Navbar.Brand as={Link} to="/">
           <img id="brand" src={Logo} alt="" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar" />

@@ -77,6 +77,10 @@ export default function SearchCocktail() {
     <>
       <style type="text/css">
         {`
+    .fixed {
+      margin-top: 160px;
+    }
+
     .form-control {
       width: 100%;
       margin-top: 20px;
@@ -97,7 +101,7 @@ export default function SearchCocktail() {
     }
     `}
       </style>
-      <Container>
+      <Container className="fixed">
         <Form>
           <Form.Group>
             <Row>

@@ -1,15 +1,21 @@
-* {
-    font-family: 'Norican', cursive;
-}
-
 .footer {
+    font-family: 'Gothic A1', sans-serif;
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 80px;
+    height: 50px;
     width: 100%;
-    background-color: rgb(250, 220, 46);
+    background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    text-align: right;
+    text-align: center;
     padding: 10px;
   }
+
+span {
+    font-family: 'Norican', cursive;
+    font-size: 30px;
+}
+
+.small {
+    font-size: 12px;
+}

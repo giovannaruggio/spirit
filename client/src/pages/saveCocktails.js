@@ -1,9 +1,11 @@
-import * as React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import auth from '../utils/auth';
-import { QUERY_ME } from '../utils/queries';
-import { useQuery } from '@apollo/client';
+import * as React from "react";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import auth from "../utils/auth";
+import { QUERY_ME } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+
+import { Row, Container, Button } from "react-bootstrap";
 
 export default function SavedCocktails() {
   const { loading, data } = useQuery(QUERY_ME);
@@ -13,76 +15,69 @@ export default function SavedCocktails() {
 
   if (loading) {
     return <div>Loading...</div>;
-  } 
+  }
   console.log(profile);
   itemData = profile.cocktails;
 
-  // const itemData = [
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-  //     title: 'Breakfast',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-  //     title: 'Burger',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-  //     title: 'Camera',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-  //     title: 'Coffee',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-  //     title: 'Hats',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-  //     title: 'Honey',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-  //     title: 'Basketball',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-  //     title: 'Fern',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-  //     title: 'Mushrooms',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-  //     title: 'Tomato basil',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-  //     title: 'Sea star',
-  //   },
-  //   {
-  //     img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-  //     title: 'Bike',
-  //   },
-  // ];
-
   return (
     <>
-    <h1>{profile.username}</h1>
-      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+      <style type="text/css">
+        {`
+
+    .profileN {
+      text-align: center;
+      margin-top: 200px;
+      font-family: 'Norican', cursive;
+      font-size: 80px;
+      padding-bottom: 40px;
+    }
+    .MuiImageListItem-img {
+      border-radius: 25px;
+    }
+    #imgC {
+      padding: 10px;
+    }
+    // .borderB {
+    //   border-style: solid;
+    //   border-width: 2px;
+    //   border-radius: 25px;
+    // }
+    .center {
+      text-align: center;
+      max-width: 100%;
+    }
+    `}
+      </style>
+      <Container>
+      <h1 className="profileN">{`${profile.username}'s Cocktails!`}</h1>
+      <ImageList
+        className="borderB"
+        sx={{ width: "100%", height: 1200, padding: "20px" }}
+        cols={3}
+        rowHeight={164}
+      >
         {itemData.map((item) => (
-          <ImageListItem key={item.image}>
-            <img
-              src={`${item.image}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${item.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.name}
-              loading="lazy"
-            />
-          </ImageListItem>
+          <div>
+            <Row className="center">
+              <Button
+                variant="outline-dark"
+                type="button"
+              >
+                ✧{item.name}✧
+              </Button>
+              </Row>
+            <ImageListItem key={item.image} id="imgC">
+              <img
+                src={`${item.image}?w=164&h=164&fit=crop&auto=format`}
+                srcSet={`${item.image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                alt={item.name}
+                loading="lazy"
+              />
+            </ImageListItem>
+          </div>
         ))}
       </ImageList>
+      </Container>
     </>
   );
 }
