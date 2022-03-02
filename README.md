@@ -31,6 +31,7 @@ Below is a link to a video that demos the functionality of our application.
 
 This application was created collaboratively by Giovanna Ruggio, John Roberts, and Michael Hranek.
 
+- https://github.com/giovannaruggio
 - https://github.com/robertsjn2000
 - https://github.com/MHranek
 
