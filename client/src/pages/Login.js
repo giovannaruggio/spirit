@@ -55,7 +55,7 @@ const Login = (props) => {
 
       Auth.login(data.login.token);
     } catch (e) {
-      console.error(e);
+      console.error(JSON.parse(JSON.stringify(e)));
     }
 
     // clear form values
